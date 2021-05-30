@@ -24,11 +24,9 @@ Dont forget to replace <server> with the unique name of the server, or it will n
             # enable https
             - "traefik.http.routers.<server>.rule=Host(`subdomain.${DOMAIN}`)"
             - "traefik.http.routers.<server>.entrypoints=websecure"
-            - "traefik.http.routers.<server>.service=api@internal"
             - "traefik.http.routers.<server>.tls=true"
 
             # enable http
             - "traefik.http.routers.<server>-http.rule=Host(`subdomain.${DOMAIN}`)"
             - "traefik.http.routers.<server>-http.entrypoints=web"
-            - "traefik.http.routers.<server>-http.service=api@internal"
 ```
