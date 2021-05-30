@@ -14,20 +14,21 @@ Proxy
 
 **enable proxy for a container**
 
-add the following code to the labels section of the container
+Add the following code to the labels section of the container.
+Dont forget to replace <server> with the unique name of the server, or it will not work.
 
 ```
         labels:
             - "traefik.enable=true"
 
             # enable https
-            - "traefik.http.routers.proxy.rule=Host(`subdomain.${DOMAIN}`)"
-            - "traefik.http.routers.proxy.entrypoints=websecure"
-            - "traefik.http.routers.proxy.service=api@internal"
-            - "traefik.http.routers.proxy.tls=true"
+            - "traefik.http.routers.<server>.rule=Host(`subdomain.${DOMAIN}`)"
+            - "traefik.http.routers.<server>.entrypoints=websecure"
+            - "traefik.http.routers.<server>.service=api@internal"
+            - "traefik.http.routers.<server>.tls=true"
 
             # enable http
-            - "traefik.http.routers.proxy-http.rule=Host(`subdomain.${DOMAIN}`)"
-            - "traefik.http.routers.proxy-http.entrypoints=web"
-            - "traefik.http.routers.proxy-http.service=api@internal"
+            - "traefik.http.routers.<server>-http.rule=Host(`subdomain.${DOMAIN}`)"
+            - "traefik.http.routers.<server>-http.entrypoints=web"
+            - "traefik.http.routers.<server>-http.service=api@internal"
 ```
